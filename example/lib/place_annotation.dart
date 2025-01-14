@@ -225,7 +225,7 @@ class PlaceAnnotationBodyState extends State<PlaceAnnotationBody> {
         .isMarkerInfoWindowShown(annotation.annotationId))!;
   }
 
-  Future<void> _getBytesFromAsset(String path, int width) async {
+  Future<void> _getBytesFromAsset(String path, int width, int height) async {
     ByteData data = await rootBundle.load(path);
     ui.Codec codec = await ui.instantiateImageCodec(data.buffer.asUint8List(),
         targetWidth: width);
@@ -233,7 +233,9 @@ class PlaceAnnotationBodyState extends State<PlaceAnnotationBody> {
     _iconFromBytes = BitmapDescriptor.fromBytes(
         (await fi.image.toByteData(format: ui.ImageByteFormat.png))!
             .buffer
-            .asUint8List());
+            .asUint8List(),
+        width: width,
+        height: height);
   }
 
   Future<void> _changeZIndex(AnnotationId annotationId) async {
@@ -249,7 +251,7 @@ class PlaceAnnotationBodyState extends State<PlaceAnnotationBody> {
   @override
   Widget build(BuildContext context) {
     _createAnnotationImageFromAsset(context, _devicePixelRatio);
-    _getBytesFromAsset('assets/creator.png', 160);
+    _getBytesFromAsset('assets/creator.png', 160, 160);
     return SafeArea(
       child: Column(
         children: <Widget>[
