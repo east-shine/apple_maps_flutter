@@ -37,9 +37,18 @@ class AnnotationIcon: Equatable {
         }
     }
     
-    public init(fromBytes bytes: FlutterStandardTypedData, id: String) {
+    public init(fromBytes bytes: FlutterStandardTypedData, id: String, width: CGFloat? = nil, height: CGFloat? = nil) {
         let screenScale = UIScreen.main.scale
-        let image = UIImage.init(data: bytes.data, scale: screenScale)
+        var image = UIImage(data: bytes.data, scale: screenScale)
+        
+        // Resize the image if width and height are provided
+        if let width = width, let height = height, let originalImage = image {
+            let size = CGSize(width: width, height: height)
+            image = UIGraphicsImageRenderer(size: size).image { _ in
+                originalImage.draw(in: CGRect(origin: .zero, size: size))
+            }
+        }
+        
         self.image = image
         self.iconType = .CUSTOM_FROM_BYTES
         self.id = id

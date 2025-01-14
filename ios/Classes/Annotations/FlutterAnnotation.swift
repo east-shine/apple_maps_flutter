@@ -70,7 +70,10 @@ class FlutterAnnotation: NSObject, MKAnnotation {
             scaleParam = CGFloat(iconData[2] as? Double ?? 1.0)
             icon = AnnotationIcon(withAsset: registrar.lookupKey(forAsset: assetPath), id: annotationId, iconScale: scaleParam)
         } else if iconType == .CUSTOM_FROM_BYTES {
-            icon = AnnotationIcon(fromBytes: iconData[1] as! FlutterStandardTypedData, id: annotationId)
+            let bytes = iconData[1] as! FlutterStandardTypedData
+            let width = iconData.count > 2 ? CGFloat(iconData[2] as! Double) : nil
+            let height = iconData.count > 3 ? CGFloat(iconData[3] as! Double) : nil
+            icon = AnnotationIcon(fromBytes: bytes, id: annotationId, width: width, height: height)
         } else if iconData.count > 1 {
             icon = AnnotationIcon(id: annotationId, iconType: iconType, hueColor: iconData[1] as! Double)
             

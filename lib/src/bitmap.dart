@@ -99,8 +99,8 @@ class BitmapDescriptor {
 
   /// Creates a BitmapDescriptor using an array of bytes that must be encoded
   /// as PNG.
-  static BitmapDescriptor fromBytes(Uint8List byteData) {
-    return BitmapDescriptor._(<dynamic>['fromBytes', byteData]);
+  static BitmapDescriptor fromBytes(Uint8List byteData, {required int width, required int height}) {
+    return BitmapDescriptor._(<dynamic>['fromBytes', byteData, width, height]);
   }
 
   final dynamic _json;
