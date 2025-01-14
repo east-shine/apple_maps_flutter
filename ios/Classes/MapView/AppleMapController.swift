@@ -105,6 +105,12 @@ public class AppleMapController: NSObject, FlutterPlatformView {
                     self.takeSnapshot(options: SnapshotOptions.init(options: args), onCompletion: { (snapshot: FlutterStandardTypedData?, error: Error?) -> Void in
                         result(snapshot ?? error)
                     })
+                    break
+                case "map#dispose":
+                    // Dispose the map view and release resources
+                    self.mapView.dispose()                    
+                    result(nil)
+                    break
                 default:
                     result(FlutterMethodNotImplemented)
                     break

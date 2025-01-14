@@ -244,4 +244,12 @@ class AppleMapController {
     return channel.invokeMethod<Uint8List>(
         'map#takeSnapshot', snapshotOptions._toMap());
   }
+
+  Future<void> dispose() async {
+    // Remove the method call handler
+    channel.setMethodCallHandler(null);
+
+    // Call native dispose method to release resources
+    await channel.invokeMethod<void>('map#dispose');
+  }
 }

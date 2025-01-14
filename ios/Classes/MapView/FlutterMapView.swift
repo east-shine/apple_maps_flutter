@@ -21,7 +21,7 @@ class FlutterMapView: MKMapView, UIGestureRecognizerDelegate {
     var options: Dictionary<String, Any>?
     var isMyLocationButtonShowing: Bool? = false
     
-    fileprivate let locationManager: CLLocationManager = CLLocationManager()
+    internal let locationManager: CLLocationManager = CLLocationManager()
     
     let mapTypes: Array<MKMapType> = [
         MKMapType.standard,
