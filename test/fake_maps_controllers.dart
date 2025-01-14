@@ -13,7 +13,13 @@ class FakePlatformAppleMap {
     cameraPosition = CameraPosition.fromMap(params['initialCameraPosition']);
     channel = MethodChannel('apple_maps_plugin.luisthein.de/apple_maps_$id',
         const StandardMethodCodec());
-    channel.setMockMethodCallHandler(onMethodCall);
+    TestDefaultBinaryMessengerBinding.instance.defaultBinaryMessenger
+        .setMockMethodCallHandler(
+      channel,
+      (MethodCall methodCall) async {
+        return onMethodCall(methodCall);
+      },
+    );
     updateOptions(params['options']);
     updatePolylines(params);
     updateAnnotations(params);

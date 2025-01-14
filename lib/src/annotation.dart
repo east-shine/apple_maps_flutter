@@ -89,7 +89,7 @@ class InfoWindow {
   }
 
   @override
-  int get hashCode => hashValues(title.hashCode, snippet, anchor);
+  int get hashCode => Object.hash(title.hashCode, snippet, anchor);
 
   @override
   String toString() {
@@ -199,7 +199,7 @@ class Annotation {
   ///
   /// Overlays are drawn in order of z-index, so that lower values means drawn
   /// earlier, and thus appearing to be closer to the surface of the Earth.
-  double zIndex;
+  final double zIndex;
 
   /// Creates a new [Annotation] object whose values are the same as this instance,
   /// unless overwritten by the specified parameters.
