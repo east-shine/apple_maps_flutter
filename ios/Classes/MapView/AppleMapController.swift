@@ -145,7 +145,7 @@ public class AppleMapController: NSObject, FlutterPlatformView {
                     break
                 case "map#dispose":
                     // Dispose the map view and release resources
-                    self.mapView.dispose()                    
+                    self.mapView.dispose()
                     result(nil)
                     break
                 default:
