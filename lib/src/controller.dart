@@ -246,10 +246,10 @@ class AppleMapController {
   }
 
   Future<void> dispose() async {
-    // Remove the method call handler
-    channel.setMethodCallHandler(null);
-
     // Call native dispose method to release resources
     await channel.invokeMethod<void>('map#dispose');
+
+    // Remove the method call handler
+    channel.setMethodCallHandler(null);
   }
 }

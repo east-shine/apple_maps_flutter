@@ -106,11 +106,6 @@ public class AppleMapController: NSObject, FlutterPlatformView {
                         result(snapshot ?? error)
                     })
                     break
-                case "map#dispose":
-                    // Dispose the map view and release resources
-                    self.mapView.dispose()                    
-                    result(nil)
-                    break
                 default:
                     result(FlutterMethodNotImplemented)
                     break
@@ -147,6 +142,11 @@ public class AppleMapController: NSObject, FlutterPlatformView {
                     break
                 case "camera#getZoomLevel":
                     result(self.mapView.calculatedZoomLevel)
+                    break
+                case "map#dispose":
+                    // Dispose the map view and release resources
+                    self.mapView.dispose()                    
+                    result(nil)
                     break
                 default:
                     result(FlutterMethodNotImplemented)
