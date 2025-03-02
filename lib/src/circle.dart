@@ -130,10 +130,10 @@ class Circle {
 
     addIfPresent('circleId', circleId.value);
     addIfPresent('consumeTapEvents', consumeTapEvents);
-    addIfPresent('fillColor', fillColor.value);
+    addIfPresent('fillColor', fillColor.toInt());
     addIfPresent('center', center._toJson());
     addIfPresent('radius', radius);
-    addIfPresent('strokeColor', strokeColor.value);
+    addIfPresent('strokeColor', strokeColor.toInt());
     addIfPresent('strokeWidth', strokeWidth);
     addIfPresent('visible', visible);
     addIfPresent('zIndex', zIndex);

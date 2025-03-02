@@ -128,8 +128,8 @@ class Polygon {
 
     addIfPresent('polygonId', polygonId.value);
     addIfPresent('consumeTapEvents', consumeTapEvents);
-    addIfPresent('fillColor', fillColor.value);
-    addIfPresent('strokeColor', strokeColor.value);
+    addIfPresent('fillColor', fillColor.toInt());
+    addIfPresent('strokeColor', strokeColor.toInt());
     addIfPresent('strokeWidth', strokeWidth);
     addIfPresent('visible', visible);
     addIfPresent('zIndex', zIndex);
@@ -182,4 +182,16 @@ List<Map<String, dynamic>>? _serializePolygonSet(Set<Polygon>? polygons) {
   return polygons
       .map<Map<String, dynamic>>((Polygon p) => p._toJson())
       .toList();
+}
+
+extension ColorUtils on Color {
+  
+  int toInt() {
+    final alpha = (a * 255).toInt();
+    final red = (r * 255).toInt();
+    final green = (g * 255).toInt();
+    final blue = (b * 255).toInt();
+    // Combine the components into a single int using bit shifting
+    return (alpha << 24) | (red << 16) | (green << 8) | blue;
+  }
 }

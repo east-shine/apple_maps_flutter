@@ -265,69 +265,6 @@ void main() {
     expect(scrollGesturesEnabled, true);
   });
 
-  // test('testGetVisibleRegion', () async {
-  //   final Key key = GlobalKey();
-  //   final LatLngBounds zeroLatLngBounds = LatLngBounds(
-  //       southwest: const LatLng(0, 0), northeast: const LatLng(0, 0));
-
-  //   final Completer<AppleMapController> mapControllerCompleter =
-  //       Completer<AppleMapController>();
-
-  //   await pumpWidget(Directionality(
-  //     textDirection: TextDirection.ltr,
-  //     child: AppleMap(
-  //       key: key,
-  //       initialCameraPosition: _kInitialCameraPosition,
-  //       onMapCreated: (AppleMapController controller) {
-  //         mapControllerCompleter.complete(controller);
-  //       },
-  //     ),
-  //   ));
-  //   final AppleMapController mapController =
-  //       await mapControllerCompleter.future;
-
-  //   await Future<dynamic>.delayed(const Duration(seconds: 3));
-
-  //   final LatLngBounds firstVisibleRegion =
-  //       await mapController.getVisibleRegion();
-
-  //   expect(firstVisibleRegion, isNotNull);
-  //   expect(firstVisibleRegion.southwest, isNotNull);
-  //   expect(firstVisibleRegion.northeast, isNotNull);
-  //   expect(firstVisibleRegion, isNot(zeroLatLngBounds));
-  //   expect(firstVisibleRegion.contains(_kInitialMapCenter), isTrue);
-
-  //   const LatLng southWest = LatLng(60, 75);
-  //   const LatLng northEast = LatLng(65, 80);
-  //   final LatLng newCenter = LatLng(
-  //     (northEast.latitude + southWest.latitude) / 2,
-  //     (northEast.longitude + southWest.longitude) / 2,
-  //   );
-
-  //   expect(firstVisibleRegion.contains(northEast), isFalse);
-  //   expect(firstVisibleRegion.contains(southWest), isFalse);
-
-  //   final LatLngBounds latLngBounds =
-  //       LatLngBounds(southwest: southWest, northeast: northEast);
-
-  //   // TODO(iskakaushik): non-zero padding is needed for some device configurations
-  //   // https://github.com/flutter/flutter/issues/30575
-  //   final double padding = 0;
-  //   await mapController
-  //       .moveCamera(CameraUpdate.newLatLngBounds(latLngBounds, padding));
-
-  //   final LatLngBounds secondVisibleRegion =
-  //       await mapController.getVisibleRegion();
-
-  //   expect(secondVisibleRegion, isNotNull);
-  //   expect(secondVisibleRegion.southwest, isNotNull);
-  //   expect(secondVisibleRegion.northeast, isNotNull);
-  //   expect(secondVisibleRegion, isNot(zeroLatLngBounds));
-
-  //   expect(firstVisibleRegion, isNot(secondVisibleRegion));
-  //   expect(secondVisibleRegion.contains(newCenter), isTrue);
-  // });
-
   test('testMyLocationButtonToggle', () async {
     final Key key = GlobalKey();
     final Completer<AppleMapInspector> inspectorCompleter =
